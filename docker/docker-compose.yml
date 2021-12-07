@@ -10,10 +10,15 @@ services:
         target: /var/lib/mysql
     container_name: bdMysql
     networks:
-      - guacamole-net
+      guacamole-net:
+        ipv4_address: 172.19.0.2
 volumes:
   guacamole-vol-bd:
 
 networks:
   guacamole-net:
     driver: "bridge"
+    ipam:
+        config:
+          - subnet: 172.19.0.0/24
+            gateway: 172.19.0.1
