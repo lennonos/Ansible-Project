@@ -1,0 +1,26 @@
+    - name: Copy sql script create/grant database to host
+      copy:
+        src: ../docker/database_and_grant.sql
+        dest: ~/
+      
+    - name: Copy shell script into host
+      copy:
+        src: ../shell/databaseAndGrant.sh
+        dest: ~/
+    
+    - name: Copy the database structure into host
+      copy:
+        src: ../docker/initdb.sql
+        dest: ~/
+
+    - name: Copy the scritp to create and config of datadase
+      command: "docker cp ~/database_and_grant.sql bdMysql:."
+
+    - name: Copy sql file into mysql container
+      command: "docker cp ~/initdb.sql bdMysql:."  
+    
+    - name: Copy shell script into container
+      command: "docker cp databaseAndGrant.sh bdMysql:."
+    
+    - name: Execute shell scrip into database
+      command: "docker exec -it bdMysql bash -c databaseAndGrant.sh"

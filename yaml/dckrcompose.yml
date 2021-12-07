@@ -1,0 +1,16 @@
+
+- name: Install docker-compose
+  hosts: guacamole
+  tasks:
+    - name: Check Ansible is installed
+      command: "/usr/local/bin/docker-compose --version"
+      register: docker_compose_current_version
+      check_mode: no
+      changed_when: false
+      failed_when: false
+
+    - name: Install docker-compose
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64"
+        dest: "/usr/local/bin/docker-compose"
+        mode: 0755    
