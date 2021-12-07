@@ -5,9 +5,10 @@
       docker_container:
         name: guacd
         image: guacamole/guacd
-        exposed_ports:
-          - 4822
+        ports:
+          - "4822:4822"
         links:
           - bdMysql:bdMysql
         networks:
           - name: "tmp_guacamole-net"
+            ipv4_address: 172.19.0.3
