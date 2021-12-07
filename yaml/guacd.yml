@@ -10,4 +10,4 @@
         links:
           - bdMysql:bdMysql
         networks:
-          - name: "guacamole_net"
+          - name: "tmp_guacamole-net"
