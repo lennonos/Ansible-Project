@@ -1,5 +1,0 @@
-- hosts: guacamole
-  tasks:
-    - name: Installing docker-compose with require
-      include_tasks: dckrcompose.yml
-      
