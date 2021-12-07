@@ -9,5 +9,11 @@ services:
         source: guacamole-vol-bd
         target: /var/lib/mysql
     container_name: bdMysql
+    networks:
+      - guacamole-net
 volumes:
   guacamole-vol-bd:
+
+networks:
+  guacamole-net:
+    driver: "bridge"
