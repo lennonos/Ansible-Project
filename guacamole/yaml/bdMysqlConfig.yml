@@ -1,0 +1,15 @@
+- name: Copy and exec script into host
+  hosts:  guacamole
+  tasks:
+    - name: Copy shell script
+      copy:
+        src: ../shell/databaseAndGrant.sh
+        dest: ~/
+
+    - name: Copy query
+      copy:
+        src: ../docker/database_and_grant.sql
+        dest: ~/        
+    
+    - name: Exec script
+      command: "bash databaseAndGrant.sh"

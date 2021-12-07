@@ -1,0 +1,30 @@
+- name: Deploy frontend guacamole
+  hosts:  guacamole
+  tasks:
+    - name: Create guacamole
+      docker_container:
+        name: guacamole
+        image: guacamole/guacamole:1.3.0
+        ports:
+          - "8080:8080"
+          - "3268:3268"                    
+        env:
+          MYSQL_DATABASE: guacamole_db
+          MYSQL_USER: guacamole_user 
+          MYSQL_PASSWORD: rafraf.123
+          MYSQL_HOSTNAME: bdMysql 
+          GUACD_HOSTNAME: guacd
+          GUACD_PORT: "4822"
+          LDAP_HOSTNAME: "192.168.0.6"
+          LDAP_PORT: "3268"
+          LDAP_USER_BASE_DN: DC=flexform,DC=com
+          LDAP_CONFIG_BASE_DN: DC=flexform,DC=com
+          LDAP_USERNAME_ATTRIBUTE: sAMAccountName
+          LDAP_SEARCH_BIND_DN: CN=Administrador,CN=Users,DC=flexform,DC=com
+          LDAP_SEARCH_BIND_PASSWORD: Temoutro50A
+        links:
+          - bdMysql:bdMysql
+          - guacd:guacd
+        networks:
+          - name: "tmp_guacamole-net"
+            ipv4_address: 172.19.0.4

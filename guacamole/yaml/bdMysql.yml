@@ -1,0 +1,26 @@
+- name: Deploy Mysql Database
+  hosts:  guacamole
+  tasks:
+    - name: Install pip
+      apt: update_cache=yes name=python-pip-whl state=latest
+    
+    - name: Install pip with python3
+      apt: update_cache=yes name=python3-pip state=latest
+
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+
+    - name: Install Docker compose Module
+      pip:
+        name: docker-compose
+
+    - name: Copia o arquivo do docker-compose
+      copy: 
+        src: /home/sysadmin/Ansible-Project/docker/docker-compose.yml
+        dest: /tmp/docker-compose.yml
+
+    - name: Deploy mysql datadase
+      docker_compose:
+        project_src: /tmp
+        files: docker-compose.yml
