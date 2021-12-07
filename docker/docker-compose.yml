@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  bdMysql:
+    image:  "mysql:5.7"
+    environment:
+      MYSQL_ROOT_PASSWORD:  rafraf.123
+    volumes:
+      - type: volume
+        source: guacamole-vol-bd
+        target: /var/lib/mysql
+    container_name: bdMysql
+volumes:
+  guacamole-vol-bd:
