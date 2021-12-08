@@ -9,6 +9,7 @@ services:
         source: guacamole-vol-bd
         target: /var/lib/mysql
     container_name: bdMysql
+    restart: always
     networks:
       guacamole-net:
         ipv4_address: 172.19.0.2
