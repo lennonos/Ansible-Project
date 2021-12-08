@@ -28,3 +28,5 @@
         networks:
           - name: "tmp_guacamole-net"
             ipv4_address: 172.19.0.4
+        
+        restart_policy: always
