@@ -1,5 +1,5 @@
 #Downloads e repositorios
-    sudo apt install software-properties-common
+    sudo apt -y install software-properties-common
     sudo add-apt-repository ppa:ondrej/php
     sudo apt update
     sudo wget https://docs.flexform.com.br/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm
